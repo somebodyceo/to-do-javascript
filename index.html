@@ -4,31 +4,46 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Todo App</title>
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400&display=swap" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="./css/fontawesome-free-5.15.2-web\css\all.css">
 	<link rel="stylesheet" type="text/css" href="./css/styles.css">
 </head>
 <body>
-	<div class="content">
-		<section class="content__title">
+		<header class="content__title">
 			<h1>Telmo's Todo List</h1>
-		</section>
-		<section class="content__todo">
-			<input type="text" name="content__todo--name">
-			<select name="content__todo--filter">
-				<option value="all">All</option>
-				<option value="completed">Completed</option>
-				<option value="uncompleted">Uncompleted</option>
-			</select>
-		</section>
-		<section class="content__todo--list">
-			<div class="todo">
-				<h2 id="todo__name">todo</h2>
-				<button class="todo__status"><i class="fas fa-check"></i></button>
-				<button class="todo__erase"><i class="fas fa-trash"></i></button>
+		</header>
+
+		<form>
+			<input type="text" name="todo__name">
+			<button type="submit">
+			<i class="fas fa-plus-square"></i>
+			</button>
+			<div class="select">
+				<select class="content__todo--filter" name="todo--filter">
+					<option value="all">All</option>
+					<option value="completed">Completed</option>
+					<option value="uncompleted">Uncompleted</option>
+				</select>
 			</div>
-		</section>
+		</form>
+			
+		<div class="todo__container">
+			<ul class="content__todo--list">
+				<div class="todo">
+					<li>
+						Comprar cogumelos
+					</li>
+					<button id="complete-btn">
+						<i class="fas fa-check"></i>
+					</button>
+					<button id="trash-btn">
+						<i class="fas fa-trash"></i>
+					</button>
+				</div>
+			</ul>
+		</div>
 		
-	</div>
 	<script type="text/javascript" src="script.js"></script>
 </body>
 </html>
