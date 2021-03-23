@@ -115,8 +115,8 @@ select{
 	padding: 0.5rem 1.5rem;
 }
 
-#trash-btn,
-#complete-btn{
+.trash-btn,
+.complete-btn{
 	color:white;
 	border:none;
 	padding:1rem;
@@ -124,18 +124,24 @@ select{
 	font-size: 1rem;
 }
 
-#trash-btn{
+.trash-btn{
 	background: #ff6f47;
 }
-#trash-btn:hover{
+.trash-btn:hover{
 	background: #fff;
 	color:#ff6f47;
 }
 
-#complete-btn{
+.complete-btn{
 	background: #2ecc71;
 }
-#complete-btn:hover{
+.complete-btn:hover{
 	background: #fff;
 	color:#2ecc71;
+}
+
+/* the other solution is on the script - so that clicking on the icons does not affect the behavior */
+.fa-check,
+.fa-trash{
+	pointer-events: none;
 }

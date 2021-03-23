@@ -15,32 +15,21 @@
 		</header>
 
 		<form>
-			<input type="text" name="todo__name">
-			<button type="submit">
-			<i class="fas fa-plus-square"></i>
+			<input id="form-input" type="text" name="todo__name">
+			<button class="form-button" type="button">
+				<i class="fas fa-plus-square"></i>
 			</button>
 			<div class="select">
-				<select class="content__todo--filter" name="todo--filter">
-					<option value="all">All</option>
-					<option value="completed">Completed</option>
-					<option value="uncompleted">Uncompleted</option>
+				<select class="content__todo--filter">
+					<option selected>All</option>
+					<option>Completed</option>
+					<option>Uncompleted</option>
 				</select>
 			</div>
 		</form>
 			
 		<div class="todo__container">
 			<ul class="content__todo--list">
-				<div class="todo">
-					<li>
-						Comprar cogumelos
-					</li>
-					<button id="complete-btn">
-						<i class="fas fa-check"></i>
-					</button>
-					<button id="trash-btn">
-						<i class="fas fa-trash"></i>
-					</button>
-				</div>
 			</ul>
 		</div>
 		
