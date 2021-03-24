@@ -41,27 +41,45 @@ htmlTodoList.addEventListener("click",(event)=>{
 		removeTodo(event)
 	}
 	if(event.target.matches(".complete-btn")){ /*|| event.target.matches(".fa-check")*/
+		// selecting button element
 		const todo = event.target.parentElement;
-		todo.classList.toggle("completed");
+
+		// change todo status on array
+		const todoId = todoList.findIndex(el=>el.id == todo.dataset.id);
+		const status = todoList[todoId].state;
+		todoList[todoId].state = !status;
+
+		//formatting todo
+		todo.classList.toggle("complete");
+
+		// formatting todo complete button
+		event.target.classList.toggle("check");
+
+		// re-rendering todo list
+		filterTodos();
 	}
 });
+
 
 // Functions
 
 /* render to-do */
-const render = function(todo){
+const render = function(todo, filter=false){
+
 	let todoDiv = document.createElement('div');
 	todoDiv.classList.add("todo");
+	if(todo.state) todoDiv.classList.toggle("complete");
+
 
 	const newTodo = document.createElement('li');
 	newTodo.innerText = todo.title;
-
 	todoDiv.appendChild(newTodo);
 
 	const completeBtn = document.createElement('button');
-	
 	const trashBtn = document.createElement('button');
+
 	completeBtn.setAttribute("class","complete-btn");
+
 	trashBtn.setAttribute("class","trash-btn");
 	completeBtn.innerHTML = '<i class="fas fa-check"></i>'
 	trashBtn.innerHTML = '<i class="fas fa-trash"></i>'
@@ -74,14 +92,43 @@ const render = function(todo){
 	htmlTodoList.appendChild(todoDiv);
 }
 
+
 const removeTodo = function(event){
 	const htmlTodo = event.target.closest('.todo');
 	const todoId = htmlTodo.dataset.id;
 
+	// remove todo from array
 	todoList.splice(todoList.findIndex(el=>el.id == todoId));
 
-
+	// remove todo from html
 	event.target.closest('.todo').remove();
-
 }
 
+
+const filterTodos = function(){
+
+	// completed   - true
+	if(inputFilter.value.toLowerCase() === "completed"){
+		const completeList = todoList.filter(todo=> todo.state === true);
+		htmlTodoList.innerHTML = "";
+		completeList.map(todo=>render(todo, true));
+		return;
+
+	}
+	// uncompleted - false
+	else if(inputFilter.value.toLowerCase() === "uncompleted"){
+		const uncompleteList = todoList.filter(todo=> todo.state === false);
+		htmlTodoList.innerHTML = "";
+		uncompleteList.map(todo=>render(todo, true));
+		return;
+	}
+	// all
+	else {
+		// clean list in case of filter usage
+		htmlTodoList.innerHTML = "";
+		todoList.map(todo=>render(todo, true));
+
+	}
+	
+
+}

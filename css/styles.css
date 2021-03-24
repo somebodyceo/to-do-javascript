@@ -145,3 +145,15 @@ select{
 .fa-trash{
 	pointer-events: none;
 }
+
+/***********************************/
+
+/* to-do completed state */
+.complete{
+	text-decoration: line-through;
+	color: grey;
+}
+.check{
+	background: #fff;
+	color:#2ecc71;
+}
